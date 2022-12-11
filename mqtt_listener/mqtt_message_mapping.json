@@ -1,0 +1,59 @@
+{
+    "mqtt_subtopic": "power_plugs/tele/+/+",
+    "measurement": "powerplugs",
+    "name": "GosundSP1",
+    "regex": "power_plugs\/tele\/(.+?)\/(.+)",
+    "regex_mapping": {
+        "device": 0,
+        "type": 1
+    },
+    "mqtt_to_influx": [
+        {
+            "name": "sensor",
+            "type": "SENSOR",
+            "influx_mapping": [
+                {
+                    "name": "ENERGY",
+                    "hide_prefix": true,
+                    "items": [
+                        "ApparentPower",
+                        "Current",
+                        "Factor",
+                        "Period",
+                        "Power",
+                        "ReactivePower",
+                        "Today",
+                        "Total",
+                        "TotalStartTime",
+                        "Voltage",
+                        "Yesterday"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "state",
+            "type": "STATE",
+            "influx_mapping": [
+                "UptimeSec",
+                "Heap",
+                "Sleep",
+                "LoadAvg",
+                "MqttCount",
+                "POWER",
+                {
+                    "name": "Wifi",
+                    "hide_prefix": false,
+                    "items": [
+                        "Channel",
+                        "Mode",
+                        "RSSI",
+                        "Signal",
+                        "LinkCount",
+                        "Downtime"
+                    ]
+                }
+            ]
+        }
+    ]
+}
