@@ -5,3 +5,4 @@
 influxdb_data
 influxdb_query
 influxdb_config
+__pycache__
